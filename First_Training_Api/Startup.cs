@@ -1,4 +1,5 @@
 using First_Training_Api.Data;
+using First_Training_Api.Data.services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -34,6 +35,9 @@ namespace First_Training_Api
             services.AddControllers();
             // Configure DBcontext with SQL DB
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(ConnectionString));
+
+            //Configure the services
+            services.AddTransient<BooksService>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v2", new OpenApiInfo { Title = "First_Training_Api_title", Version = "v2" });
