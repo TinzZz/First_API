@@ -35,5 +35,19 @@ namespace First_Training_Api.Controllers
             _booksService.AddBook(book);
             return Ok();
         }
+
+        [HttpPut("Update-Book-by-id/{id}")]
+        public IActionResult UpdateBookById(int id, [FromBody]BookVM book)
+        {
+            var updateBook = _booksService.UpdateBookById(id, book);
+            return Ok();
+        }
+
+        [HttpDelete("Delete-book-by-id/{id}")]
+        public IActionResult DeleteBookById(int id)
+        {
+            _booksService.DeletebookById(id);
+            return Ok();
+        }
     }
 }
